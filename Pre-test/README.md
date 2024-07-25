@@ -39,8 +39,8 @@ path = os.getcwd()
 export_path = os.path.join(path,'./insight/total-count-gender.csv')
 
 
-customer = pd.read_csv("./warmup-data/customer.csv")
-transactions = pd.read_csv("./warmup-data/transactions.csv")
+customer = pd.read_csv("./data/customer.csv")
+transactions = pd.read_csv("./data/transactions.csv")
 
 df = pd.merge(customer, transactions, on="CustomerId")
 
@@ -63,10 +63,48 @@ Gender | Count
 -- | --
 F | 95
 M |  264
----
+
+![total-count-gender-chart](https://github.com/user-attachments/assets/26413523-3247-4e15-a24f-54eca7a17e71)
 
 ### Insghts:
   * You might find that males tend to have higher transaction compared to fameles, which could indicate different purchasing priorities or finacial behaviors.
 
+***
 
-**1. Monthly Transaction?**
+
+**2. What is the average amount of student expense in Monthly?**
+
+Description:
+
+  To analyze the monthly student expenses using Python and Pandas, you'll typically start with a Transaction Date and Amount. Here's a structured approach to perform this analysis:
+
+```python
+import pandas as pd
+
+customer = pd.read_csv("./data/customer.csv")
+transactions = pd.read_csv("./data/transactions.csv")
+
+df = pd.merge(customer, transactions, on="CustomerId")
+
+df['TransactionDate'] = pd.to_datetime(df['TransactionDate'], format='ISO8601')
+monthly = df.groupby(by=[pd.Grouper(key='TransactionDate', freq='M')])['Amount'].mean().reset_index()
+print(monthly)
+```
+
+### Output:
+Month | TransactionDate	| Amount
+-- | -- | --
+0	| 2023-01-31 |	1048.341707
+1	| 2023-02-28 |	1063.370353
+2 |	2023-03-31 |	1015.124375
+3 |	2023-04-30 |	1122.768372
+4	| 2023-05-31 | 956.328875
+5	| 2023-06-30 | 959.833780
+6	| 2023-07-31 | 1121.541778
+7	| 2023-08-31 | 975.807174
+8	| 2023-09-30 | 1102.982703
+9 | 2023-10-31 | 1035.899213
+10 | 2023-11-30 | 1039.426986
+11 | 2023-12-31	| 1045.446207
+
+  
