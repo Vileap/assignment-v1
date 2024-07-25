@@ -3,8 +3,8 @@
 
 ## 📚 Table of Contents
 - [Tool and Technology](#tool-and-technology)
-- [Data Explanation](#data-explanation)
-- [Question and Solution](#question-and-solution)
+- [Data Overview](#data-overview)
+- [Question and Insights](#questions-and-insights)
 
 ***
 
@@ -16,15 +16,15 @@
   After the obtaining the CSV from MySQL WorkBench, the next step involves analyzing it using the Python and the Pandas library.
 
 
-## Data Explanation
+## Data Overview
+The dataset includes two tables:
 
-Here are some further details about the dataset:
+Customers: Contains information about customers including their ID, name, gender, university, and state.
+Transactions: Records the transactions made by customers, including the transaction ID, customer ID, product, amount, and date.
 
-1. This data has University and ShopInState operations using university and shopState dataset.
-2. `TrsansactionId`: its can be count as total or unique purchase and `Amount` is the acutal amount of purchase
 ***
 
-## Question and Solution
+## Questions and Insights
 
 **1. Which Gender spend the most in this data?**
 
