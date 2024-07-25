@@ -2,13 +2,13 @@
 
 
 ## 📚 Table of Contents
-- [Tool and Technology](#tool-and-technology)
+- [Tools and Technology](#tools-and-technology)
 - [Data Overview](#data-overview)
 - [Observation and Insights](#observation-and-insights)
 
 ***
 
-## Tool and Technology
+## Tools and Technology
   To convert data from an SQL file into a CSV file using MySQL Workbench, begin by opening MySQL Workbench and connecting to your MySQL database where you intend to create the table. Import the SQL file containing table creation and data insertion queries and this action will create the necessary table and popluate them with data if your script includes INSERT statement. 
   
   Next, to export the table data as CSV file, locate the table within the schema, right-click on its name, and choose Table Data Export Wizard. Configure the export settings to specify CSV as the file format and designate a destination path for saving the CSV file.
@@ -19,8 +19,9 @@
 ## Data Overview
 The dataset includes two tables:
 
-Customers: Contains information about customers including their ID, name, gender, university, and state.
-Transactions: Records the transactions made by customers, including the transaction ID, customer ID, product, amount, and date.
+* Customers: Contains information about customers including their ID, name, gender, university, and state.
+
+* Transactions: Records the transactions made by customers, including the transaction ID, customer ID, product, amount, and date.
 
 ***
 
