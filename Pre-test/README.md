@@ -4,7 +4,7 @@
 ## 📚 Table of Contents
 - [Tool and Technology](#tool-and-technology)
 - [Data Overview](#data-overview)
-- [Question and Insights](#questions-and-insights)
+- [Observation and Insights](#observation-and-insights)
 
 ***
 
@@ -24,11 +24,11 @@ Transactions: Records the transactions made by customers, including the transact
 
 ***
 
-## Questions and Insights
+## Observation and Insights
 
-**1. Which Gender spend the most in this data?**
 
-Description:
+**1. Gender Spending Analysis**
+
   To calcuate it, we need to look at the data transactions and customers by combine this two table into one by using the CustomerId from Customers Table align it with CustomerId from Transaction Table.
 
 ```python
@@ -57,8 +57,12 @@ sum_total_gender.plot(kind='bar')
 print(sum_total_gender)
 # this line of code is for printing the data to csv file.
 sum_total_gender.to_csv(export_path, index=False, header=True)
+
 ```
-### Output:
+
+### Observation:
+The analysis of transaction data revealed that males (Gender: M) have a higher count of transactions compared to females (Gender: F). Specifically, there were 264 transactions for males and 95 for females.
+
 Gender | Count
 -- | --
 F | 95
@@ -66,13 +70,15 @@ M |  264
 
 ![total-count-gender-chart](https://github.com/user-attachments/assets/26413523-3247-4e15-a24f-54eca7a17e71)
 
-### Insghts:
-  * You might find that males tend to have higher transaction compared to fameles, which could indicate different purchasing priorities or finacial behaviors.
+
+
+### Insights:
+You might find that males tend to have higher transaction compared to fameles, which could indicate different purchasing priorities or finacial behaviors.
 
 ***
 
 
-**2. What is the average amount of student expense in Monthly?**
+**2. Average Monthly Student Expenses**
 
 Description:
 
@@ -130,9 +136,128 @@ Month | TransactionDate	| Amount
 5	| 2023-06-30 | 959.833780
 4	| 2023-05-31 | 956.328875
 
+### Observation:
+The average monthly spending of students shows variability throughout the year. Notable peaks in expenses were observed in April and July, with average amounts of 1122.77 and 1121.54 respectively. The lowest average spending occurred in May, with an amount of 956.33.
 
-### Insghts:
-  * Based on chart above and "Output 2" table, it has been identified that April had the highest spending compared to other months. This conclusion was drawn after grouping the data by TransactionDate, summing up the amount or expenses for each month, and sorting the results to find the month with the highest total expenditure.
+### Insght:
+April and July experienced the highest average expenses, indicating these months may be associated with higher spending activities or special events. The lowest spending in May suggests that students might be more conservative with their expenses during this period. Understanding these patterns could help in targeting financial products or promotional strategies during high-expense months.
 
 ***
-  
+
+**3. Purchase Amount by University**
+
+Description:
+
+  To identify and visualize the top 10 universities by expenses based on your student expenses dataset using Python and Pandas: 
+
+```python
+import pandas as pd
+
+customer = pd.read_csv("./data/customer.csv")
+transactions = pd.read_csv("./data/transactions.csv")
+
+df = pd.merge(customer, transactions, on="CustomerId")
+summary_uni = df[['University', 'Amount']]
+value = (summary_uni.Amount).groupby(summary_uni.University).sum().reset_index(name="Amount")
+
+value.sort_values("Amount", axis=0, ascending=False, inplace=True, na_position='last')
+print(value.head(10))
+```
+
+
+
+![top-10-university-expense](https://github.com/user-attachments/assets/99bfbddb-e309-4f15-8e70-f88021ca90c6)
+
+### Observation:
+Here are the top universities by total purchase amount:
+
+University	| Amount
+| -- | --
+University of Illinois at Urbana-Champaign | 39584.67
+Illinois Institute of Technology | 30217.00
+University of California, Santa Barbara (UCSB) | 27325.62
+University of Illinois, Chicago (UIC) |  23871.08
+Clark University | 22100.34
+Howard University |  21652.28
+University of Wisconsin-Madison | 21609.87
+California Institute of Technology (Caltech) |  20743.08
+Wayne State University | 20249.32
+University of California, San Diego (UCSD) |  19984.42
+
+### Insights:
+Universities with higher purchase amounts might have a more affluent student base or higher purchasing frequency. Tailoring offers or discounts to students from these universities could be beneficial for increasing sales and engagement.
+
+***
+
+**4. Top 10 Users by Purchase Transactions**
+
+Description:
+
+  To identify and visualize the top users by expenses based on your student expenses dataset using Python and Pandas: 
+
+```python
+import pandas as pd
+
+customer = pd.read_csv("./data/customer.csv")
+transactions = pd.read_csv("./data/transactions.csv")
+
+df = pd.merge(customer, transactions, on="CustomerId")
+most_spender = df['Username'].value_counts().reset_index(name='Count')
+most_spender.head(10)
+
+```
+
+### Observation:
+
+Username | Count
+-- | --
+Phillip Maxwell	| 7
+Jocelyn Hope	| 7
+Tom Bristow	| 7
+Bart Bell	| 7
+Chad Mullins | 6
+Tyson Wade | 6
+Joseph Kelly | 6
+Isla Holmes | 6
+Mark Swift | 6
+Kirsten Bennett	| 6
+
+![top-10-most-spender](https://github.com/user-attachments/assets/219ff521-ad87-4b37-ac96-115e3f17b03f)
+
+### Insight:
+Users with the highest number of transactions are highly engaged customers. Targeting these top users with personalized offers or loyalty rewards could enhance customer retention and increase overall engagement.
+
+***
+
+**5. Top 5 States by Transaction Amount**
+
+```python
+import pandas as pd
+
+customer = pd.read_csv("./data/customer.csv")
+transactions = pd.read_csv("./data/transactions.csv")
+df = pd.merge(customer, transactions, on="CustomerId")
+
+value = df[['ShopInState', 'Amount']]
+
+summary = (value.Amount).groupby(value.ShopInState).sum().reset_index(name="Amount")
+summary.sort_values("Amount", axis=0, ascending=False, inplace=True, na_position='last')
+print(summary.head(5))
+```
+
+## Observation:
+The top 5 states by total transaction amount are:
+
+ShopInState | Amount
+-- | --
+Kansas  | 30244.23
+Wisconsin  | 29881.15
+Pennsylvania  | 28898.50
+Missouri | 26285.01
+Minnesota  | 26061.73
+
+![top-5-state-bytransaction-amount](https://github.com/user-attachments/assets/fc2d2b33-1695-429a-af5f-4e6a2f69dd43)
+
+
+### Insight:
+States with the highest transaction amounts represent key markets for regional promotions. Focused marketing strategies and promotional campaigns in these states could drive further growth and capitalize on existing high spending patterns.
