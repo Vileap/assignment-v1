@@ -266,7 +266,7 @@ States with the highest transaction amounts represent key markets for regional p
 
 ***
 
-**6. Comparison of Top 5 and Least Popular Products**
+**6. Comparison of Top 5 Most and Least Popular Products**
 
 #### Top 5 Most Popular Products
 ```python
