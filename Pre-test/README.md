@@ -2,6 +2,7 @@
 
 
 ## 📚 Table of Contents
+- [Tool and Technology](#tool-and-technology)
 - [Data Explanation](#data-explanation)
 - [Question and Solution](#question-and-solution)
 
