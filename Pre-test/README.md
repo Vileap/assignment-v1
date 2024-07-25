@@ -107,4 +107,32 @@ Month | TransactionDate	| Amount
 10 | 2023-11-30 | 1039.426986
 11 | 2023-12-31	| 1045.446207
 
+![monthly-expense-student](https://github.com/user-attachments/assets/ff1998bc-86c9-4a48-804d-e615b4cd1081)
+
+  To extract the insight from this analyze, we need to find which month is the most expense by perform the following code:
+```python
+  monthly.sort_values("Amount", axis=0, ascending=False, inplace=True, na_position='last')
+  print(monthly)
+```
+### Output 2: 
+Month | TransactionDate	| Amount
+-- | -- | --
+3	| 2023-04-30| 1122.768372
+6 |	2023-07-31 | 1121.541778
+8	| 2023-09-30 | 1102.982703
+1	| 2023-02-28 | 1063.370353
+0	| 2023-01-31 | 1048.341707
+11 | 2023-12-31 | 1045.446207
+10 | 2023-11-30 | 1039.426986
+9	| 2023-10-31 | 1035.899213
+2	| 2023-03-31 | 1015.124375
+7	| 2023-08-31 | 975.807174
+5	| 2023-06-30 | 959.833780
+4	| 2023-05-31 | 956.328875
+
+
+### Insghts:
+  * Based on chart above and "Output 2" table, it has been identified that April had the highest spending compared to other months. This conclusion was drawn after grouping the data by TransactionDate, summing up the amount or expenses for each month, and sorting the results to find the month with the highest total expenditure.
+
+***
   
